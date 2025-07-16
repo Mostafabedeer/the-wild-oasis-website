@@ -18,7 +18,7 @@ export default async function Page() {
       </h2>
 
       {bookings.length === 0 ? (
-        <p className="text-lg">
+        <p className="text-base md:text-lg">
           You have no reservations yet. Check out our{" "}
           <Link className="text-accent-500 underline" href="/cabins">
             luxury cabins &rarr;
