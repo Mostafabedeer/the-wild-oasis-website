@@ -15,7 +15,7 @@ function Filter() {
     router.replace(`${pathname}?${searchParams.toString()}`, { scroll: false });
   }
   return (
-    <div className="border-primary-50 mb-5 flex items-center justify-end border">
+    <div className="border-primary-50 mb-5 flex items-center justify-start border md:justify-end">
       <Button
         filter="all"
         activeFilter={activeFilter}
@@ -54,7 +54,7 @@ function Button({ filter, activeFilter, onClick, children }) {
   return (
     <button
       onClick={onClick}
-      className={`text-primary-200 hover:bg-primary-800 focus:ring-primary-500 cursor-pointer px-5 py-2 focus:ring-2 focus:outline-none ${
+      className={`text-primary-200 hover:bg-primary-800 focus:ring-primary-500 cursor-pointer px-5 py-2 text-sm focus:ring-2 focus:outline-none md:text-base ${
         activeFilter === filter ? "bg-primary-800" : ""
       }`}
     >
