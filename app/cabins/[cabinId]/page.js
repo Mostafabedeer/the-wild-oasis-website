@@ -32,7 +32,7 @@ export default async function Page({ params }) {
     <div className="mx-auto mt-8 max-w-6xl">
       <Cabin cabin={cabin} />
       <div>
-        <h2 className="text-accent-400 mb-10 text-center text-5xl font-semibold">
+        <h2 className="text-accent-400 mb-10 text-center font-semibold sm:text-lg md:text-4xl lg:text-5xl">
           Reserve {cabin.name} today. Pay on arrival.
         </h2>
         <Suspense fallback={<Spinner />}>

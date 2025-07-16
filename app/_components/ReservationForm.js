@@ -34,8 +34,8 @@ function ReservationForm({ cabin, user }) {
 
   return (
     <div className="scale-[1.01]">
-      <div className="bg-primary-800 text-primary-300 flex items-center justify-between px-16 py-2">
-        <p>Logged in as</p>
+      <div className="bg-primary-800 text-primary-300 flex items-center justify-between px-6 py-2 md:px-16">
+        <p className="text-sm md:text-base">Logged in as</p>
 
         <div className="flex items-center gap-4">
           <img
@@ -45,7 +45,7 @@ function ReservationForm({ cabin, user }) {
             src={user.image}
             alt={user.name}
           />
-          <p>{user.name}</p>
+          <p className="text-sm md:text-base"> {user.name}</p>
         </div>
       </div>
 
@@ -54,7 +54,7 @@ function ReservationForm({ cabin, user }) {
           await createReservationwithData(formData);
           resetRange();
         }}
-        className="bg-primary-900 flex flex-col gap-5 px-16 py-10 text-lg"
+        className="bg-primary-900 flex flex-col gap-5 px-8 py-10 text-lg md:px-16"
       >
         <div className="space-y-2">
           <label htmlFor="numGuests">How many guests?</label>
@@ -75,9 +75,11 @@ function ReservationForm({ cabin, user }) {
           </select>
         </div>
 
-        <p>
-          from {String(range.from)} to {String(range.to)}
-        </p>
+        {range.from && range.to && (
+          <p className="text-primary-500 text-sm md:text-base">
+            from {String(range.from)} to {String(range.to)}
+          </p>
+        )}
 
         <div className="space-y-2">
           <label htmlFor="observations">
