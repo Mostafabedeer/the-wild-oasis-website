@@ -67,7 +67,11 @@ export default function Navigation({ session }) {
         </li>
       </ul>
       {/* side nav */}
-      <MobileSideNav isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
+      <MobileSideNav
+        session={session}
+        isMenuOpen={isMenuOpen}
+        setIsMenuOpen={setIsMenuOpen}
+      />
     </nav>
   );
 }

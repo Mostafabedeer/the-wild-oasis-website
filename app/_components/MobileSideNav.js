@@ -5,7 +5,7 @@ import Overlay from "./Overlay";
 import { XMarkIcon } from "@heroicons/react/24/solid";
 import SignOutButton from "./SignOutButton";
 
-function MobileSideNav({ isMenuOpen, setIsMenuOpen }) {
+function MobileSideNav({ session, isMenuOpen, setIsMenuOpen }) {
   return (
     <>
       <aside
@@ -30,33 +30,29 @@ function MobileSideNav({ isMenuOpen, setIsMenuOpen }) {
               Cabins
             </Link>
           </li>
-          <li className="w-full">
-            <Link
-              href="/account"
-              className="hover:text-accent-400 block w-full rounded-lg p-2 text-lg transition-colors duration-200 hover:bg-gray-700"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Account
-            </Link>
-          </li>
-          <li className="w-full">
-            <Link
-              href="/account/reservations"
-              className="hover:text-accent-400 block w-full rounded-lg p-2 text-lg transition-colors duration-200 hover:bg-gray-700"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Reservations
-            </Link>
-          </li>
-          <li className="w-full">
-            <Link
-              href="/account/profile"
-              className="hover:text-accent-400 block w-full rounded-lg p-2 text-lg transition-colors duration-200 hover:bg-gray-700"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Profile
-            </Link>
-          </li>
+
+          {session?.user && (
+            <>
+              <li className="w-full">
+                <Link
+                  href="/account/reservations"
+                  className="hover:text-accent-400 block w-full rounded-lg p-2 text-lg transition-colors duration-200 hover:bg-gray-700"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Reservations
+                </Link>
+              </li>
+              <li className="w-full">
+                <Link
+                  href="/account/profile"
+                  className="hover:text-accent-400 block w-full rounded-lg p-2 text-lg transition-colors duration-200 hover:bg-gray-700"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Profile
+                </Link>
+              </li>
+            </>
+          )}
           <li className="w-full">
             <Link
               href="/about"
@@ -66,9 +62,20 @@ function MobileSideNav({ isMenuOpen, setIsMenuOpen }) {
               About
             </Link>
           </li>
-          <li className="mt-auto">
-            <SignOutButton />
-          </li>
+          {session?.user ? (
+            <li className="mt-auto">
+              <SignOutButton />
+            </li>
+          ) : (
+            <li className="w-full">
+              <Link
+                href="/account"
+                className="hover:text-accent-400 block w-full rounded-lg p-2 text-lg transition-colors duration-200 hover:bg-gray-700"
+              >
+                Guest area
+              </Link>
+            </li>
+          )}
         </ul>
       </aside>
       <Overlay isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
